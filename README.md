@@ -1,7 +1,7 @@
  # Deploy Web App on AWS With AWS Amplify, Lambda, DynamoDB, IAM and API Gateway
    Cloud computing provides on-demand access to computing resources like servers, storage, and databases. Serverless functions are a type of cloud computing service that allows you to run code without managing servers.
 
-   Project includes 5 AWS service:
+   Project includes 5 AWS services:
 
 # Deploy a static website to AWS Amplify.
 
