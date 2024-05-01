@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+   <head>
+      <meta charset="UTF-8">
+      <title>Contact Management System</title>
+      <style>
+         body {
+            background-color: #202b3c;
+            display: flex; /* Centering the form */
+            justify-content: center; /* Centering the form */
+            align-items: center; /* Centering the form */
+            height: 100vh; /* Centering the form */
+            margin: 0; /* Removing default margin */
+         }
+         form {
+            display: flex;
+            flex-direction: column; /* Aligning form elements vertically */
+            align-items: center; /* Centering form elements horizontally */
+            background-color: #fff; /* Adding a white background to the form */
+            padding: 20px; /* Adding padding to the form */
+            border-radius: 8px; /* Adding border radius to the form */
+         }
+         label, button {
+            color: #FF9900;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            margin: 10px 0; /* Adding margin between elements */
+         }
+         input {
+            color: #232F3E;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            margin: 10px 0; /* Adding margin between elements */
+            width: 250px; /* Setting input width */
+            padding: 5px; /* Adding padding to input */
+         }
+         button {
+            background-color: #FF9900; /* Adding background color to button */
+            color: #fff; /* Changing button text color */
+            border: none; /* Removing button border */
+            padding: 10px 20px; /* Adding padding to button */
+            cursor: pointer; /* Changing cursor to pointer on hover */
+         }
+         h1{
+            color: #202b3c;
+            font-family: Arial, Helvetica, sans-serif;
+         }
+      </style>
+      <script>
+         // Define the function to call the API with the provided first name, last name, and phone number
+         let callAPI = (fname, lname, pnumber)=>{
+            // Create a new Headers object and set the 'Content-Type' to 'application/json'
+             let myHeaders = new Headers();
+             myHeaders.append("Content-Type", "application/json");
+            
+            // Create the JSON string from the input values
+             let raw = JSON.stringify({"firstname": fname, "lastname": lname, "phone_number": pnumber});
+            
+            // Define the request options including method, headers, body, and redirect behavior
+             let requestOptions = {
+                 method: 'POST', // Method type
+                 headers: myHeaders, // Headers for the request
+                 body: raw, // The body of the request containing the JSON string
+                 redirect: 'follow' // Automatically follow redirects
+             };
+            
+            // Use the fetch API to send the request to the specified URL
+             fetch("https://uvibtoen42.execute-api.us-east-1.amazonaws.com/web-app-stage", requestOptions) // Replace "API_KEY" with your actual API endpoint
+             .then(response => response.text()) // Parse the response as text
+             .then(result => alert(JSON.parse(result).message)) // Parse the result as JSON and alert the message
+             .catch(error => console.log('error', error)); // Log any errors to the console
+         }
+      </script>
+   </head>
+   <body>
+      <form>
+         <h1>Contact Management System</h1>
+         <label>First Name :</label>
+         <input type="text" id="fName">
+         <label>Last Name :</label>
+         <input type="text" id="lName">
+         <label>Phone Number :</label>
+         <input type="text" id="pNumber">
+         <button type="button" onclick="callAPI(document.getElementById('fName').value, document.getElementById('lName').value, document.getElementById('pNumber').value)">Submit</button>
+         <!-- Button to submit user input without reloading the page -->
+         <!-- When clicked, it calls the callAPI function with values from the input fields -->
+      </form>
+   </body>
+</html>
