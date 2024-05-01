@@ -17,6 +17,24 @@ Project Workflow:
 - Manage permissions with IAM policies. Integrate your frontend code with the backend services.
 
 
+                     [Web Application]
+                             |  
+                             |
+                +-------------------------+
+                |         AWS Amplify     |
+                |                         |
+                +------------+------------+
+                             |
+                             |
+                [API Gateway - REST API]
+                     |            |
+                     |            |
+           [Lambda Function]     [IAM]
+            (Business Logic)   (Access Control)
+                  |                         |
+                  |                         |
+                [DynamoDB]             [Other AWS Services]
+            (NoSQL Database)
 
 
 
